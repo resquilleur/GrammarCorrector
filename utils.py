@@ -33,4 +33,3 @@ class GrammarDataset(Dataset):
             for k in inputs.keys():
                 print(k, len(inputs[k]))
         return inputs
-    
