@@ -18,9 +18,11 @@ class GrammarDataset(Dataset):
         input_, target_ = example['input'], example['output']
 
         tokenized_inputs = self.tokenizer(input_, pad_to_max_length=self.pad_to_max_length,
-                                          max_length=self.max_len, return_attention_mask=True)
+                                          max_length=self.max_len, truncation=True,
+                                          return_attention_mask=True)
         tokenized_targets = self.tokenizer(target_, pad_to_max_length=self.pad_to_max_length,
-                                           max_length=self.max_len, return_attention_mask=True)
+                                           max_length=self.max_len, truncation=True,
+                                           return_attention_mask=True)
         inputs = {"input_ids": tokenized_inputs['input_ids'],
                   "attention_mask": tokenized_inputs['attention_mask'],
                   "labels": tokenized_targets['input_ids']}
